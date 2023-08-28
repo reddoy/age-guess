@@ -1,0 +1,49 @@
+<!-- 
+Project ageGuess
+CSC 337
+Developers: Rohan O'Malley,Daniel Peabody
+
+This is the HTMl file for the account page. This page displays infomation about the current
+user that is logged in including the username and highscore for each category.
+-->
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Display Cookie Value</title>
+    <link rel="stylesheet" href="account.css">
+  </head>
+  <body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title"><p>ageGuess 🤔</p>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="gamemodes.html">Game Modes</a>
+        <a href="leaderboard.html">Leaderboard</a>
+        <a href="account.html">Account</a>
+      </div>
+    </div>
+    <div class="account">
+        <h1>Your Account</h1>
+        <h2 id="username"></h2>
+        <h2 id="celebscore">Celebrity Highscore: 0</h2>
+        <h2 id="athletescore">Athlete Highscore: 0</h2>
+        <h2 id="comunscore">Community Highscore: 0</h2>
+    </div>
+    <script src="account.js"></script>
+  </body>
+</html>

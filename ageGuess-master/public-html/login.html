@@ -1,0 +1,53 @@
+<!-- 
+Project ageGuess
+CSC 337
+Developers: Rohan O'Malley,Daniel Peabody
+
+This is the HTMl file for the login page. On this page users can login to 
+their account. This page relies on login.js to verify if the user exists and 
+to check if the password is correct.  
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="login.css">
+</head>
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title"><p>ageGuess 🤔</p>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gamemodes.html">Game Modes</a>
+            <a href="leaderboard.html">Leaderboards</a>
+            <a href="account.html">Account</a>
+          </div>
+        </div>
+
+	<div class="login-page">
+        <h1>Login</h1>
+		<div class="form">
+			<form class="login-form" id="loginbutton">
+				<input id= "usernameLogin" type="text" placeholder="Username"/>
+				<input id="passwordLogin"type="password" placeholder="Password"/>
+				<button>Login</button>
+				<p class="message">Not registered? <a href="createaccount.html">Create an account</a></p>
+			</form>
+		</div>
+	</div>
+  <script src="login.js"></script>
+</body>
+</html>

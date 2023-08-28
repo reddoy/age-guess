@@ -1,0 +1,175 @@
+/* 
+Project ageGuess
+CSC 337
+Developers: Rohan O'Malley,Daniel Peabody
+
+This file is the style sheet for the createaccount.html page. It uses 2 fonts: Inter, and Happy
+and uses the same navigation found within the site. Most of the unique style for this page is 
+found within the form class.
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('static/Inter-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'happy';
+  src: url('Happy.ttf') format('truetype');
+}
+
+body {
+	font-family: "Inter";
+    background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
+}
+
+
+
+.nav {
+  font-family: "happy";
+    height: 90px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font-size: 2rem;
+    background-color: rgb(0, 0, 0,0.4);
+    padding-bottom: 1rem;
+  }
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+
+  .nav p {
+    color: white;
+    padding-left: 20px;
+  }
+  
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 2rem;
+  }
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 1.5rem;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 45px 20px 20px 10px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .nav > .nav-links > a:hover {
+    color: white;
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 30px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 100px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+  
+  #logo {
+    width: 200px;
+  }
+
+.create-page {
+	display: flex;
+    color: white;
+    width: 100%;
+    flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.create-page h1 {
+    margin-bottom: 1rem;
+}
+
+.form {
+	background-color: #fff;
+	padding: 50px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.create-form input {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 5px;
+	border: none;
+}
+
+.create-form button {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	border-radius: 5px;
+	border: none;
+	background-color: #4CAF50;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.create-form button:hover {
+	background-color: #3e8e41;
+}
+

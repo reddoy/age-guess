@@ -1,0 +1,204 @@
+/* 
+Project ageGuess
+CSC 337
+Developers: Rohan O'Malley,Daniel Peabody
+
+This file is the style sheet for the index.html page. It uses 2 fonts: Inter, and Happy
+and uses the same navigation found within the site. The background color 
+which is used for the entire site was created using a linear gradient.
+*/
+
+@font-face {
+  font-family: 'Inter';
+  src: url('static/Inter-ExtraBold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'happy';
+  src: url('Happy.ttf') format('truetype');
+}
+
+body {
+    background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav {
+  font-family: "happy";
+    height: 70px;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    font-size: 2rem;
+    background-color: rgb(0, 0, 0,0.4);
+    padding-bottom: 1rem;
+  }
+  
+  .nav > .nav-header {
+    display: inline;
+  }
+
+  .nav p {
+    color: white;
+    padding-left: 20px;
+  }
+  
+  .nav > .nav-header > .nav-title {
+    display: inline-block;
+    font-size: 2rem;
+  }
+  
+  .nav > .nav-btn {
+    display: none;
+  }
+  
+  .nav > .nav-links {
+    display: inline;
+    float: right;
+    font-size: 1.5rem;
+  }
+  
+  .nav > .nav-links > a {
+    display: inline-block;
+    padding: 45px 20px 20px 10px;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .nav > .nav-links > a:hover {
+    color: white;
+  }
+  
+  .nav > #nav-check {
+    display: none;
+  }
+  
+  @media (max-width:600px) {
+    .nav > .nav-btn {
+      display: inline-block;
+      position: absolute;
+      right: 0px;
+      top: 30px;
+    }
+    .nav > .nav-btn > label {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      padding: 13px;
+    }
+    .nav > .nav-btn > label > span {
+      display: block;
+      width: 25px;
+      height: 10px;
+      border-top: 2px solid #eee;
+    }
+    .nav > .nav-links {
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
+      height: 0px;
+      transition: all 0.3s ease-in;
+      overflow-y: hidden;
+      top: 100px;
+      left: 0px;
+    }
+    .nav > .nav-links > a {
+      display: block;
+      width: 100%;
+    }
+    .nav > #nav-check:not(:checked) ~ .nav-links {
+      height: 0px;
+    }
+    .nav > #nav-check:checked ~ .nav-links {
+      height: calc(100vh - 50px);
+      overflow-y: auto;
+    }
+  }
+  
+  #logo {
+    width: 200px;
+  }
+
+
+.content {
+    text-align: center;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.content h1 {
+    font-size: 4.5rem;
+    font-family: "happy";
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* CSS */
+.button {
+    align-items: center;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
+    box-sizing: border-box;
+    color: #121212;
+    cursor: pointer;
+    display: inline-flex;
+    flex: 1 1 auto;
+    font-family: Inter,sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1;
+    margin: 1rem;
+    outline: none;
+    padding: 1rem 1.2rem;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow .2s,-webkit-box-shadow .2s;
+    white-space: nowrap;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+  
+  .button:hover {
+    box-shadow: #13cf4f 0 0 0 5px, transparent 0 0 0 0;
+  }
+
+#hero {
+    margin: 0;
+    padding: 0;
+    font-size: 10rem;
+}
+
+#createAcctBtn{
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 1rem;
+    cursor: pointer;
+    transition: box-shadow .2s,-webkit-box-shadow .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+#createAcctBtn:hover {
+    box-shadow: #13cf4f 0 0 0 5px, transparent 0 0 0 0;
+}
