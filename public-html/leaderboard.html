@@ -1,0 +1,66 @@
+<!-- 
+Project ageGuess
+CSC 337
+Developers: Rohan O'Malley,Daniel Peabody
+
+This is the HTMl file for our leaderboard page. On this page users can navigate 
+between the 3 different leaderboard sections. The leaderboard sections relate to the 
+game modes which are celebrity, athlete, and community.  
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ageGuess</title>
+    <link rel="stylesheet" href="gamemodes.css">
+
+</head>
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title"><p>ageGuess 🤔</p>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gamemodes.html">Game Modes</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="account.html">Account</a>
+          </div>
+        </div>
+
+        <section class="gamemodes">
+            <div class="gamemodes__container">
+                <h2>LEADERBOARDS</h2>
+                <div class="gamemodes__grid">
+                    <div class="gamemodes__griditem">
+                        <a href="celebleaderboard.html">
+                            <h3>Celebrity Leaderboard</h3>
+                        </a>
+                    </div>
+                    <div class="gamemodes__griditem">
+                        <a href="athleteleaderboard.html">
+                            <h3>Athlete Leaderboard</h3>
+                        </a>
+                    </div>
+                    <div class="gamemodes__griditem">
+                        <a href="comunleaderboard.html">
+                            <h3>Community Leaderboard</h3>
+                        </a>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>

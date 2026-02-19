@@ -1,0 +1,52 @@
+<!-- 
+Project ageGuess
+CSC 337
+Developers: Rohan O'Malley,Daniel Peabody
+
+This is the HTMl file for the create account page. On this page users can create
+an account that they can use to login with. This page relies on createaccount.js
+to send the information to the server so it can create an account for the user. 
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<link rel="stylesheet" type="text/css" href="createaccount.css">
+</head>
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title"><p>ageGuess 🤔</p>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gamemodes.html">Game Modes</a>
+            <a href="leaderboard.html">Leaderboards</a>
+            <a href="account.html">Account</a>
+          </div>
+        </div>
+        
+	<div class="create-page">
+        <h1>Create Account</h1>
+		<div class="form">
+			<form class="create-form" id="createbutton">
+				<input type="text" placeholder="Username" id="usernameCreate"/>
+				<input type="password" placeholder="Password" id="passwordCreate"/>
+				<button>Create Account</button>
+			</form>
+		</div>
+	</div>
+  <script src="createaccount.js"></script>
+</body>
+</html>

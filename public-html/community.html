@@ -1,0 +1,66 @@
+<!-- 
+Project ageGuess
+CSC 337
+Developers: Rohan O'Malley,Daniel Peabody
+
+This is the HTMl file for the community game page. This is the page where the
+game is played. The page is split into two sections, one displays the image and
+allows the user to guess the age. The second half displays the score and how
+many guesses the user has left in the game. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ageGuess</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="communitygame.js"></script>
+</head>
+<body>
+    <div class="nav">
+        <input type="checkbox" id="nav-check">
+        <div class="nav-header">
+          <div class="nav-title"><p>ageGuess 🤔</p>
+          </div>
+        </div>
+        <div class="nav-btn">
+          <label for="nav-check">
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="gamemodes.html">Game Modes</a>
+            <a href="leaderboard.html">Leaderboard</a>
+            <a href="account.html">Account</a>
+          </div>
+        </div>
+          <div class="guessArea">
+            <div class="splitleft">
+              <p class="tag">Community</p>
+              <img src="" alt="" id="celebPic">
+              <input type="text" class="guess" id="guessInput" placeholder="Guess Age" onkeydown="checkGuess(event)">
+              <p id="celebName"></p>
+              <p id="dateTaken"></p>
+            </div>
+            <div class="splitright">
+              <p id="curScore">Current Score: <span id="scorenumber">0</span></p>
+              <p id="guessesLeft">Guesses Left: <span id="guessNumber">25</span></p>
+              <div class="uploadPhotoArea">
+                <p>Community<br>Upload</p>
+                <input type="file" id="imageFile" name="image" accept="image/*">
+                <input type="text" id="namePerson" placeholder="Name of Person in Photo">
+                <input type="number" id="ageInPhoto" placeholder="Age in Photo Uploaded">
+                <input type="number" id="datePhotoTaken" placeholder="Year Photo Taken">
+                <button type="button" name="button" onclick="uploadPhoto()">Upload Photo</button>
+              </div>
+            </div>
+          </div>
+</body>
+</html>
