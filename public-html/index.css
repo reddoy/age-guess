@@ -1,16 +1,14 @@
-/* 
-Project ageGuess
-CSC 337
-Developers: Rohan O'Malley,Daniel Peabody
+/**
+ * Modern Index Page Styles
+ * Beautiful landing page with animations and modern design
+ */
 
-This file is the style sheet for the index.html page. It uses 2 fonts: Inter, and Happy
-and uses the same navigation found within the site. The background color 
-which is used for the entire site was created using a linear gradient.
-*/
+@import url('styles.css');
 
 @font-face {
   font-family: 'Inter';
-  src: url('static/Inter-ExtraBold.ttf') format('truetype');
+  src: url('Inter/static/Inter-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
 }
 
 @font-face {
@@ -19,120 +17,210 @@ which is used for the entire site was created using a linear gradient.
 }
 
 body {
-    background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
+/* Animated background particles */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Navigation */
 .nav {
   font-family: "happy";
-    height: 70px;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    font-size: 2rem;
-    background-color: rgb(0, 0, 0,0.4);
-    padding-bottom: 1rem;
-  }
-  
-  .nav > .nav-header {
-    display: inline;
-  }
+  height: 80px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-size: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav p {
+  color: white;
+  padding-left: 30px;
+  margin: 0;
+  line-height: 80px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 1.3rem;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 0 25px;
+  line-height: 80px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav > .nav-links > a::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+  width: 0;
+  height: 3px;
+  background: white;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav > .nav-links > a:hover::after {
+  width: calc(100% - 50px);
+}
+
+.nav > .nav-links > a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    height: 70px;
+  }
+  
   .nav p {
-    color: white;
+    line-height: 70px;
     padding-left: 20px;
-  }
-  
-  .nav > .nav-header > .nav-title {
-    display: inline-block;
-    font-size: 2rem;
-  }
-  
-  .nav > .nav-btn {
-    display: none;
-  }
-  
-  .nav > .nav-links {
-    display: inline;
-    float: right;
     font-size: 1.5rem;
   }
   
-  .nav > .nav-links > a {
+  .nav > .nav-btn {
     display: inline-block;
-    padding: 45px 20px 20px 10px;
-    text-decoration: none;
-    color: white;
+    position: absolute;
+    right: 0;
+    top: 20px;
   }
   
-  .nav > .nav-links > a:hover {
-    color: white;
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+    cursor: pointer;
   }
   
-  .nav > #nav-check {
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    border-top: 3px solid white;
+    margin-bottom: 5px;
+    transition: all 0.3s ease;
+  }
+  
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background: rgba(102, 126, 234, 0.95);
+    backdrop-filter: blur(20px);
+    height: 0;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 70px;
+    left: 0;
+  }
+  
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+    padding: 20px 30px;
+    line-height: normal;
+  }
+  
+  .nav > .nav-links > a::after {
     display: none;
   }
   
-  @media (max-width:600px) {
-    .nav > .nav-btn {
-      display: inline-block;
-      position: absolute;
-      right: 0px;
-      top: 30px;
-    }
-    .nav > .nav-btn > label {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      padding: 13px;
-    }
-    .nav > .nav-btn > label > span {
-      display: block;
-      width: 25px;
-      height: 10px;
-      border-top: 2px solid #eee;
-    }
-    .nav > .nav-links {
-      position: absolute;
-      display: block;
-      width: 100%;
-      background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
-      height: 0px;
-      transition: all 0.3s ease-in;
-      overflow-y: hidden;
-      top: 100px;
-      left: 0px;
-    }
-    .nav > .nav-links > a {
-      display: block;
-      width: 100%;
-    }
-    .nav > #nav-check:not(:checked) ~ .nav-links {
-      height: 0px;
-    }
-    .nav > #nav-check:checked ~ .nav-links {
-      height: calc(100vh - 50px);
-      overflow-y: auto;
-    }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0;
   }
   
-  #logo {
-    width: 200px;
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
   }
+}
 
-
+/* Content Section */
 .content {
-    text-align: center;
-    color: white;
-    font-size: 1.4rem;
+  text-align: center;
+  color: white;
+  font-size: 1.4rem;
+  padding: 4rem 2rem;
+  position: relative;
+  z-index: 1;
+  animation: slideInUp 0.8s ease-out;
 }
 
 .content h1 {
-    font-size: 4.5rem;
-    font-family: "happy";
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-family: "happy", sans-serif;
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: float 3s ease-in-out infinite;
+}
+
+.content h2 {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  margin-bottom: 3rem;
+  font-weight: 300;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0.95;
 }
 
 a {
@@ -144,61 +232,91 @@ a:visited {
   color: inherit;
 }
 
-/* CSS */
+/* Modern Button */
 .button {
-    align-items: center;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
-    box-sizing: border-box;
-    color: #121212;
-    cursor: pointer;
-    display: inline-flex;
-    flex: 1 1 auto;
-    font-family: Inter,sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    justify-content: center;
-    line-height: 1;
-    margin: 1rem;
-    outline: none;
-    padding: 1rem 1.2rem;
-    text-align: center;
-    text-decoration: none;
-    transition: box-shadow .2s,-webkit-box-shadow .2s;
-    white-space: nowrap;
-    border: 0;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  .button:hover {
-    box-shadow: #13cf4f 0 0 0 5px, transparent 0 0 0 0;
-  }
-
-#hero {
-    margin: 0;
-    padding: 0;
-    font-size: 10rem;
+  align-items: center;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  color: #667eea;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  justify-content: center;
+  line-height: 1;
+  margin: 1rem;
+  outline: none;
+  padding: 1.2rem 2.5rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  border: 0;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
 }
 
-#createAcctBtn{
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
-    font-size: 1.2rem;
-    font-weight: 700;
-    margin: 1rem;
-    cursor: pointer;
-    transition: box-shadow .2s,-webkit-box-shadow .2s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+.button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.button:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  color: #764ba2;
+}
+
+.button:active {
+  transform: translateY(-2px);
+}
+
+#hero {
+  margin: 2rem 0;
+  padding: 0;
+  font-size: clamp(4rem, 15vw, 12rem);
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+  animation: float 4s ease-in-out infinite;
+  animation-delay: 0.5s;
+}
+
+#createAcctBtn {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+  text-decoration: none;
+  display: inline-block;
 }
 
 #createAcctBtn:hover {
-    box-shadow: #13cf4f 0 0 0 5px, transparent 0 0 0 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }

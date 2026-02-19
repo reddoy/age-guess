@@ -1,16 +1,13 @@
-/* 
-Project ageGuess
-CSC 337
-Developers: Rohan O'Malley,Daniel Peabody
+/**
+ * Modern Game Page Styles
+ * Beautiful game interface with glassmorphism and animations
+ */
 
-This file is the main style sheet for the application. This sheet styles all of the game modes and rules pages.
-Classes are kept consistant on those pages to allow for steamlined style changes. It uses the same navigation,
-fonts, and background color found throughout the site.
-*/
+@import url('styles.css');
 
-@font-face{
-    font-family: 'Inter';
-    src: url('Inter/static/Inter-Medium.ttf') format('truetype');
+@font-face {
+  font-family: 'Inter';
+  src: url('Inter/static/Inter-Medium.ttf') format('truetype');
 }
 
 @font-face {
@@ -19,109 +16,161 @@ fonts, and background color found throughout the site.
 }
 
 body {
-    background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
-    margin: 0;
-    padding: 0;
-    font-family:'Happy', sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
 }
 
+/* Navigation - same as index */
 .nav {
-    height: 70px;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    font-size: 2rem;
-    background-color: rgb(0, 0, 0,0.5);
-    padding-bottom: 1rem;
-  }
-  
-  .nav > .nav-header {
-    display: inline;
-  }
+  height: 80px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-size: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav p {
+  color: white;
+  padding-left: 30px;
+  margin: 0;
+  line-height: 80px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 1.3rem;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 0 25px;
+  line-height: 80px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav > .nav-links > a::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+  width: 0;
+  height: 3px;
+  background: white;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav > .nav-links > a:hover::after {
+  width: calc(100% - 50px);
+}
+
+.nav > .nav-links > a:hover {
+  transform: translateY(-2px);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    height: 70px;
+  }
+  
   .nav p {
-    color: white;
+    line-height: 70px;
     padding-left: 20px;
-  }
-  
-  .nav > .nav-header > .nav-title {
-    display: inline-block;
-    font-size: 2rem;
-  }
-  
-  .nav > .nav-btn {
-    display: none;
-  }
-  
-  .nav > .nav-links {
-    display: inline;
-    float: right;
     font-size: 1.5rem;
   }
   
-  .nav > .nav-links > a {
+  .nav > .nav-btn {
     display: inline-block;
-    padding: 45px 20px 20px 10px;
-    text-decoration: none;
-    color: white;
+    position: absolute;
+    right: 0;
+    top: 20px;
   }
   
-  .nav > .nav-links > a:hover {
-    color: white;
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+    cursor: pointer;
   }
   
-  .nav > #nav-check {
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    border-top: 3px solid white;
+    margin-bottom: 5px;
+  }
+  
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background: rgba(102, 126, 234, 0.95);
+    backdrop-filter: blur(20px);
+    height: 0;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 70px;
+    left: 0;
+  }
+  
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+    padding: 20px 30px;
+    line-height: normal;
+  }
+  
+  .nav > .nav-links > a::after {
     display: none;
   }
   
-  @media (max-width:600px) {
-    .nav > .nav-btn {
-      display: inline-block;
-      position: absolute;
-      right: 0px;
-      top: 30px;
-    }
-    .nav > .nav-btn > label {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      padding: 13px;
-    }
-    .nav > .nav-btn > label > span {
-      display: block;
-      width: 25px;
-      height: 10px;
-      border-top: 2px solid #eee;
-    }
-    .nav > .nav-links {
-      position: absolute;
-      display: block;
-      width: 100%;
-      background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
-      height: 0px;
-      transition: all 0.3s ease-in;
-      overflow-y: hidden;
-      top: 100px;
-      left: 0px;
-    }
-    .nav > .nav-links > a {
-      display: block;
-      width: 100%;
-    }
-    .nav > #nav-check:not(:checked) ~ .nav-links {
-      height: 0px;
-    }
-    .nav > #nav-check:checked ~ .nav-links {
-      height: calc(100vh - 50px);
-      overflow-y: auto;
-    }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0;
   }
   
-  #logo {
-    width: 200px;
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
   }
+}
 
+/* Text Container */
 .textContainer {
   width: 100%;
   display: flex;
@@ -129,248 +178,339 @@ body {
   justify-content: center;
   align-items: center;
   color: white;
-  font-family: "Inter";
-}
-
-.textContainer h1{
-  font-size: 2.5rem;
-}
-.textContainer h2{
-  font-size: 2rem;
-}
-.textContainer p{
-  font-size: 1.5rem;
-}
-
-.guessArea {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 5rem;
-    align-items: center;
-    font-size: 2.5rem;
-    color: white;
-    margin: 0;
-
-}
-
-.splitleft{
-  background-color: rgb(0, 0, 0,0.5);
-  border: 2px solid black;
-  text-align: center;
+  font-family: "Inter", sans-serif;
   padding: 2rem;
+  animation: slideInUp 0.6s ease-out;
+}
+
+.textContainer h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.textContainer h2 {
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 300;
+}
+
+.textContainer p {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  opacity: 0.9;
+}
+
+/* Guess Area */
+.guessArea {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  align-items: flex-start;
+  font-size: 2.5rem;
+  color: white;
+  margin: 2rem auto;
+  padding: 2rem;
+  max-width: 1400px;
+  flex-wrap: wrap;
+}
+
+.splitleft {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  text-align: center;
+  padding: 2.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  animation: slideInUp 0.8s ease-out;
+}
+
+.splitleft:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .tag {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
 }
 
 .guessArea img {
-    height: 380px;
-    border: 2px solid black;
-    box-shadow: 5px 5px 2px black;
+  height: 400px;
+  width: auto;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
+.guessArea img:hover {
+  transform: scale(1.02);
+}
+
+.splitright {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 2.5rem;
+  min-width: 250px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideInUp 1s ease-out;
+}
+
+/* Modern Input */
 .guess {
-  font-size: 13px;
-  border-radius: 4px;
+  font-size: 1.2rem;
+  border-radius: 12px;
   line-height: 1.5;
-  padding: 5px 10px;
-  transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
-  border: 2px solid #dee1e2;
-  color: rgb(14, 14, 16);
-  background: #dee1e2;
+  padding: 1rem 1.5rem;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #333;
+  background: rgba(255, 255, 255, 0.95);
   display: block;
-  height: 30px;
-  margin-right: auto;
-  margin-left: auto;
+  width: 100%;
+  margin: 1rem auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.guess:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.guess:focus {
+  outline: none;
+  border-color: #667eea;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.2);
 }
 
 #curScore {
-  margin: 0px;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
-  
-  .guess:hover {
-      border-color: #ccc;
-  }
-  .guess:focus{
-      border-color: #9147ff;
-      background: #fff;
-  }
-
 
 #celebName {
-  margin: 5px;
+  margin: 1rem 0;
   padding: 0;
   color: white;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
+
 #dateTaken {
-  margin: 0;
+  margin: 0.5rem 0;
   padding: 0;
-  color: white;
-  font-size: 1.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.2rem;
 }
-  
 
-
-/* CSS */
+/* Buttons */
 .button {
   align-items: center;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: transparent 0 0 0 3px,rgba(18, 18, 18, .1) 0 6px 20px;
-  box-sizing: border-box;
-  color: #121212;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  color: #667eea;
   cursor: pointer;
   display: inline-flex;
-  flex: 1 1 auto;
-  font-family: Inter,sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
   font-weight: 700;
   justify-content: center;
-  line-height: 1;
-  margin: 1rem;
-  outline: none;
-  padding: 1rem 1.2rem;
-  text-align: center;
+  padding: 1rem 2rem;
   text-decoration: none;
-  transition: box-shadow .2s,-webkit-box-shadow .2s;
-  white-space: nowrap;
+  transition: all 0.3s ease;
   border: 0;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+  margin: 1rem;
 }
 
 .button:hover {
-  box-shadow: #13cf4f 0 0 0 5px, transparent 0 0 0 0;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 
 #ready {
   width: 20%;
   min-width: 300px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-
+  margin: 2rem auto;
 }
-
 
 #ready a {
   text-decoration: none;
 }
 
-#ready a:visited{
-  text-decoration: none;
-  color: inherit;
-}
-
-
-/* Define styles for the table */
+/* Leaderboard */
 .leaderboard {
   text-align: center;
-}
-table {
-  border-collapse: collapse;
-  margin: auto;
-  width: 80%;
-  max-width: 800px;
-  font-family: Arial, sans-serif;
-  border: 5px solid black;
-  margin-bottom: 3rem;
-}
-th, td {
-  padding: 10px;
-  text-align: left;
-}
-th {
-  background-color: white;
-  color: black;
-}
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-tr:nth-child(odd) {
-  background-color: black;
-  color: white;
-}
-tr:hover {
-  background-color: green;
+  padding: 2rem;
 }
 
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem auto;
+  width: 90%;
+  max-width: 900px;
+  font-family: 'Inter', sans-serif;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+th, td {
+  padding: 1.2rem;
+  text-align: left;
+}
+
+th {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+}
+
+tr {
+  transition: all 0.3s ease;
+}
+
+tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+tr:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.02);
+}
+
+td {
+  color: white;
+  font-weight: 500;
+}
+
+/* Animations */
 .incorrect {
   animation: shakeRed 0.5s cubic-bezier(.36,.07,.19,.97) both;
-	box-shadow: none;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.3) !important;
 }
 
 @keyframes shakeRed {
   10%, 90% {
-    background-color: red;
-    transform: translate3d(-1px, 0, 0);
+    background-color: rgba(239, 68, 68, 0.2);
+    transform: translate3d(-2px, 0, 0);
   }
-
   20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
-
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%, 60% {
     transform: translate3d(4px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-6px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(6px, 0, 0);
   }
 }
 
 .correct {
   animation: gflash 1s;
+  box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.3) !important;
 }
 
 @keyframes gflash {
-  10%, 90% {
-    background-color: green;
-    transform: translate3d(-1px, 0, 0);
+  0% {
+    background-color: rgba(16, 185, 129, 0.3);
   }
-
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
+  50% {
+    background-color: rgba(16, 185, 129, 0.5);
+    transform: scale(1.05);
   }
-
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
-
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
+  100% {
+    background-color: transparent;
   }
 }
 
-/*Create a slow yellow flash for a second for the class close*/
 .close {
   animation: yflash 1s;
+  box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.3) !important;
 }
 
 @keyframes yflash {
-  10%, 90% {
-    background-color: yellow;
-    transform: translate3d(-1px, 0, 0);
+  0% {
+    background-color: rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    background-color: rgba(245, 158, 11, 0.5);
+  }
+  100% {
+    background-color: transparent;
   }
 }
 
-.uploadPhotoArea{
+/* Upload Photo Area */
+.uploadPhotoArea {
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  align-items: left;
-  background-color: rgb(0, 0, 0,0.3);
-  padding: 1rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 2rem;
+  margin: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .uploadPhotoArea p {
-  font-size: 2rem;
-  line-height: 2rem;
-  padding-bottom: 0px;
-  margin: 10px;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin: 0.5rem 0;
+  color: white;
+}
+
+.uploadPhotoArea input {
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.95);
+  color: #333;
+  font-size: 1rem;
+}
+
+.uploadPhotoArea button {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.uploadPhotoArea button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }

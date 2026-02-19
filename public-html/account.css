@@ -1,18 +1,13 @@
-/* 
-Project ageGuess
-CSC 337
-Developers: Rohan O'Malley,Daniel Peabody
+/**
+ * Modern Account Page Styles
+ * Beautiful profile card with glassmorphism
+ */
 
-This file is the style sheet for the account.html page. It uses 2 fonts: Inter, and Happy
-and uses the same navigation found within the site. Most of the stylying for the page is found
-within the .account class.
-*/
-
-
+@import url('styles.css');
 
 @font-face {
   font-family: 'Inter';
-  src: url('static/Inter-ExtraBold.ttf') format('truetype');
+  src: url('Inter/static/Inter-ExtraBold.ttf') format('truetype');
 }
 
 @font-face {
@@ -20,126 +15,223 @@ within the .account class.
   src: url('Happy.ttf') format('truetype');
 }
 
-
 body {
-    background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
-    margin: 0;
-    padding: 0;
-    font-family:'Inter', sans-serif
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
 }
 
+/* Navigation */
 .nav {
   font-family: "happy";
-    height: 70px;
-    width: 100%;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    font-size: 2rem;
-    background-color: rgb(0, 0, 0,0.4);
-    padding-bottom: 1rem;
-  }
-  
-  .nav > .nav-header {
-    display: inline;
-  }
+  height: 80px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-size: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.nav > .nav-header {
+  display: inline;
+}
+
+.nav p {
+  color: white;
+  padding-left: 30px;
+  margin: 0;
+  line-height: 80px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.nav > .nav-header > .nav-title {
+  display: inline-block;
+  font-size: 2rem;
+}
+
+.nav > .nav-btn {
+  display: none;
+}
+
+.nav > .nav-links {
+  display: inline;
+  float: right;
+  font-size: 1.3rem;
+}
+
+.nav > .nav-links > a {
+  display: inline-block;
+  padding: 0 25px;
+  line-height: 80px;
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav > .nav-links > a::after {
+  content: '';
+  position: absolute;
+  bottom: 20px;
+  left: 25px;
+  width: 0;
+  height: 3px;
+  background: white;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav > .nav-links > a:hover::after {
+  width: calc(100% - 50px);
+}
+
+.nav > .nav-links > a:hover {
+  transform: translateY(-2px);
+}
+
+.nav > #nav-check {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .nav {
+    height: 70px;
+  }
+  
   .nav p {
-    color: white;
+    line-height: 70px;
     padding-left: 20px;
-  }
-  
-  .nav > .nav-header > .nav-title {
-    display: inline-block;
-    font-size: 2rem;
-  }
-  
-  .nav > .nav-btn {
-    display: none;
-  }
-  
-  .nav > .nav-links {
-    display: inline;
-    float: right;
     font-size: 1.5rem;
   }
   
-  .nav > .nav-links > a {
+  .nav > .nav-btn {
     display: inline-block;
-    padding: 45px 20px 20px 10px;
-    text-decoration: none;
-    color: white;
+    position: absolute;
+    right: 0;
+    top: 20px;
   }
   
-  .nav > .nav-links > a:hover {
-    color: white;
+  .nav > .nav-btn > label {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    padding: 13px;
+    cursor: pointer;
   }
   
-  .nav > #nav-check {
+  .nav > .nav-btn > label > span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    border-top: 3px solid white;
+    margin-bottom: 5px;
+  }
+  
+  .nav > .nav-links {
+    position: absolute;
+    display: block;
+    width: 100%;
+    background: rgba(102, 126, 234, 0.95);
+    backdrop-filter: blur(20px);
+    height: 0;
+    transition: all 0.3s ease-in;
+    overflow-y: hidden;
+    top: 70px;
+    left: 0;
+  }
+  
+  .nav > .nav-links > a {
+    display: block;
+    width: 100%;
+    padding: 20px 30px;
+    line-height: normal;
+  }
+  
+  .nav > .nav-links > a::after {
     display: none;
   }
   
-  @media (max-width:600px) {
-    .nav > .nav-btn {
-      display: inline-block;
-      position: absolute;
-      right: 0px;
-      top: 30px;
-    }
-    .nav > .nav-btn > label {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      padding: 13px;
-    }
-    .nav > .nav-btn > label > span {
-      display: block;
-      width: 25px;
-      height: 10px;
-      border-top: 2px solid #eee;
-    }
-    .nav > .nav-links {
-      position: absolute;
-      display: block;
-      width: 100%;
-      background-image: linear-gradient(92.88deg, #5983e4 9.16%, #355fae 43.89%, #2146b4 64.72%);
-      height: 0px;
-      transition: all 0.3s ease-in;
-      overflow-y: hidden;
-      top: 100px;
-      left: 0px;
-    }
-    .nav > .nav-links > a {
-      display: block;
-      width: 100%;
-    }
-    .nav > #nav-check:not(:checked) ~ .nav-links {
-      height: 0px;
-    }
-    .nav > #nav-check:checked ~ .nav-links {
-      height: calc(100vh - 50px);
-      overflow-y: auto;
-    }
+  .nav > #nav-check:not(:checked) ~ .nav-links {
+    height: 0;
   }
   
-  #logo {
-    width: 200px;
+  .nav > #nav-check:checked ~ .nav-links {
+    height: calc(100vh - 70px);
+    overflow-y: auto;
   }
+}
 
-
+/* Account Section */
 .account {
-    width: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    color: white;
-    text-align: center;
-    background-color: rgb(0, 0, 0,0.4);
-    padding: 2rem;
-    border: 2px solid black;
-    box-shadow: 10px 5px 5px black;
-    margin-top: 3rem;
+  width: 90%;
+  max-width: 600px;
+  margin: 3rem auto;
+  color: white;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  animation: slideInUp 0.8s ease-out;
+  transition: all 0.3s ease;
+}
+
+.account:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 .account h1 {
-    text-decoration: underline;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.account p {
+  font-size: 1.3rem;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  border-left: 4px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.account p:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
+  border-left-color: white;
+}
+
+.account #username {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+}
+
+.account #celebscore,
+.account #athletescore,
+.account #comunscore {
+  font-size: 1.2rem;
+  font-weight: 600;
 }
