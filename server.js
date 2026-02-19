@@ -16,7 +16,6 @@ const bcrypt = require('bcrypt');
 const app = express();
 
 // Configuration
-const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 3000;
 const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost:27017/ageguess';
 
@@ -426,6 +425,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start Server
-app.listen(port, hostname, () => {
-  console.log(`🚀 Server running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+  console.log(`🚀 Server running on port ${port}`);
+  console.log(`🌐 Access your app at: ${process.env.RAILWAY_PUBLIC_DOMAIN || `http://localhost:${port}`}`);
 });
