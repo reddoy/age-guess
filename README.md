@@ -4,6 +4,12 @@ A web game where you guess how old celebrities, athletes, and community-submitte
 
 ![Age Guess logo](public-html/images/logo.png)
 
+**Status:** Finished class project.
+
+## Background
+
+I made this for one of my CS classes in college. Wikipedia usually notes the year a person's photo was taken, so I scraped the photos from Wikipedia and worked out how old each person was in their picture. That age is what you're trying to guess.
+
 ## Features
 
 - **Three game modes:** celebrities, athletes, and community photos uploaded by players
