@@ -1,199 +1,57 @@
-# ageGuess 🤔
+# Age Guess
 
-A fun and engaging web-based age guessing game where players test their skills by guessing the ages of celebrities, athletes, and community-submitted photos. Compete with friends, track your high scores, and climb the leaderboards!
+A web game where you guess how old celebrities, athletes, and community-submitted people are. Make an account to save high scores and climb the leaderboards.
 
-![ageGuess Logo](public-html/images/logo.png)
+![Age Guess logo](public-html/images/logo.png)
 
-## 🎮 Features
+## Features
 
-- **Three Game Modes:**
-  - **Celebrities**: Guess the age of famous celebrities
-  - **Athletes**: Test your knowledge of sports stars
-  - **Community**: Play with user-submitted photos
+- **Three game modes:** celebrities, athletes, and community photos uploaded by players
+- **Rounds of 25 guesses:** an exact guess scores a point and loads the next photo, a guess within 5 years lets you try again, and anything else costs a guess
+- **Accounts:** sign up to save high scores per mode, or play anonymously
+- **Leaderboards:** the top 10 players for each mode
 
-- **User Accounts:**
-  - Create an account to track your progress
-  - Save your high scores across all game modes
-  - View your personal statistics
+## Tech stack
 
-- **Leaderboards:**
-  - Compete for the top spots
-  - Separate leaderboards for each game mode
-  - See the top 10 players globally
+- **Backend:** Node.js, Express, MongoDB with Mongoose, bcrypt for password hashing, and cookie-based sessions
+- **Frontend:** vanilla JavaScript, HTML, and CSS
+- **Data tooling:** Python scripts that scrape photos of celebrities and athletes from Wikipedia
 
-- **Gameplay:**
-  - 25 guesses per round
-  - Visual feedback (correct, close, incorrect)
-  - Score tracking
-  - Automatic new image loading
+## Getting started
 
-- **Community Features:**
-  - Upload your own photos to the community collection
-  - Play with photos submitted by other users
+You need Node.js 18 or later and a MongoDB database (local or Atlas).
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v18.0.0 or higher)
-- npm or yarn
-- MongoDB database (local or cloud)
-
-### Installation
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/ageGuess.git
-   cd ageGuess
-   ```
-
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-3. **Set up environment variables:**
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Edit `.env` and add your configuration:
-   ```env
-   HOSTNAME=localhost
-   PORT=3000
-   MONGODB_URI=your_mongodb_connection_string
-   SESSION_SECRET=your-secret-key-here
-   ```
-
-4. **Start the server:**
-   ```bash
-   npm start
-   ```
-   
-   For development with auto-reload:
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser:**
-   Navigate to `http://localhost:3000`
-
-## 📁 Project Structure
-
-```
-ageGuess/
-├── server.js              # Express server and API routes
-├── package.json           # Dependencies and scripts
-├── .env.example          # Environment variables template
-├── .gitignore            # Git ignore rules
-├── README.md             # This file
-└── public-html/          # Frontend files
-    ├── index.html        # Home page
-    ├── login.html        # Login page
-    ├── createaccount.html # Account creation
-    ├── gamemodes.html    # Game mode selection
-    ├── celeb.html        # Celebrity game
-    ├── athlete.html      # Athlete game
-    ├── community.html    # Community game
-    ├── leaderboard.html  # Leaderboard page
-    ├── account.html      # User account page
-    ├── *.js             # JavaScript files
-    ├── *.css            # Stylesheets
-    └── images/          # Image assets
+```bash
+git clone https://github.com/reddoy/age-guess.git
+cd age-guess
+npm install
+cp .env.example .env   # set HOSTNAME, PORT, MONGODB_URI, SESSION_SECRET
+npm run dev            # http://localhost:3000
 ```
 
-## 🛠️ Technology Stack
+Use `npm start` to run it without auto-reload. Deployment steps for Render or Railway are in [`DEPLOYMENT.md`](DEPLOYMENT.md).
 
-- **Backend:**
-  - Node.js
-  - Express.js
-  - MongoDB with Mongoose
-  - bcrypt for password hashing
-  - cookie-parser for session management
+## Project structure
 
-- **Frontend:**
-  - Vanilla JavaScript (ES6+)
-  - HTML5
-  - CSS3 with modern animations
-  - Responsive design
+| Path | What's in it |
+|---|---|
+| `server.js` | Express server and API routes |
+| `public-html/` | Frontend pages, scripts, styles, fonts, and images |
+| `ageGuess-master/wikipics/` | Scripts for scraping photos from Wikipedia and loading them into MongoDB |
 
-## 📡 API Endpoints
+## API
 
-### Authentication
-- `POST /account/login/` - User login
-- `POST /account/create` - Create new account
-- `GET /get/account` - Get user account info
+| Method | Route | Purpose |
+|---|---|---|
+| `POST` | `/account/create` | Create an account |
+| `POST` | `/account/login/` | Log in |
+| `GET` | `/get/account` | Current user's info and high scores |
+| `GET` | `/get/image/:mode` | Random photo for a mode (`celeb`, `athlete`, or `comm`) |
+| `POST` | `/check/guess/:mode` | Check a guess |
+| `POST` | `/save/score/:mode` | Save a score |
+| `POST` | `/upload/image` | Upload a community photo |
+| `GET` | `/get/leaderboard/:mode` | Top 10 scores for a mode |
 
-### Game
-- `GET /get/image/:mode` - Get random image (celeb/athlete/comm)
-- `POST /check/guess/:mode` - Check user's guess
-- `POST /save/score/:mode` - Save user's score
+## Authors
 
-### Community
-- `POST /upload/image` - Upload community photo
-
-### Leaderboard
-- `GET /get/leaderboard/:mode` - Get top 10 scores
-
-## 🎯 How to Play
-
-1. **Start Playing:**
-   - Click "Play Anonymously" to play without an account
-   - Or create an account to track your scores
-
-2. **Choose a Game Mode:**
-   - Select Celebrities, Athletes, or Community
-
-3. **Make Your Guess:**
-   - Look at the photo
-   - Enter your age guess
-   - Press Enter to submit
-
-4. **Scoring:**
-   - **Correct**: Exact match - +1 point, new image
-   - **Close**: Within 5 years - Try again
-   - **Incorrect**: Wrong guess - Lose a guess
-
-5. **Game Over:**
-   - When you run out of guesses (25 total)
-   - Your score is saved (if logged in)
-   - A new round begins automatically
-
-## 🔒 Security Features
-
-- Password hashing with bcrypt
-- Secure cookie handling
-- Input validation
-- Error handling
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 👥 Authors
-
-- **Rohan O'Malley**
-- **Daniel Peabody**
-
-## 🙏 Acknowledgments
-
-- Built as a web development project
-- Thanks to all contributors and players!
-
-## 📧 Support
-
-If you encounter any issues or have questions, please open an issue on GitHub.
-
----
-
-**Have fun guessing ages! 🎉**
+Rohan O'Malley and Daniel Peabody
