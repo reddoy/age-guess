@@ -3,13 +3,15 @@ import os
 from bs4 import BeautifulSoup
 import time
 
+here = os.path.dirname(os.path.abspath(__file__))
 
-with open("C:/Users/rohanomalley/Desktop/CS_projects_work/ageGuess/ageGuess-master/wikipics/wikiLinks.txt", 'r') as file:
+with open(os.path.join(here, "wikiLinks.txt"), 'r') as file:
     lines = file.readlines()
 
 
 
-path_to_folder = "C:/Users/rohanomalley/Desktop/CS_projects_work/ageGuess/ageGuess-master/wikipics/wikiphotos"
+path_to_folder = os.path.join(here, "wikiphotos")
+os.makedirs(path_to_folder, exist_ok=True)
 
 for wikilink in lines:
      time.sleep(1)
@@ -43,9 +45,9 @@ for wikilink in lines:
 
         fullName = wikilink[5:].strip()
         
-        filename = f"{path_to_folder}{fullName}-{bday_year}-{newDate}.jpeg"
+        filename = f"{fullName}-{bday_year}-{newDate}.jpeg"
         with open(os.path.join(path_to_folder, filename), 'wb') as f:
             f.write(response.content)
-            print(f"{path_to_folder}{fullName}-{bday_year}-{newDate}.jpeg has been written!")
+            print(f"{filename} has been written!")
      
 

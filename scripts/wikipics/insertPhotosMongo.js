@@ -20,7 +20,8 @@ app.use(cookieParser());
 
 mongoose.set('strictQuery', false);
 
-const mongoDB = 'mongodb+srv://doadmin:REDACTED_PASSWORD@finalproj-beb76a02.mongo.ondigitalocean.com/admin?tls=true&authSource=admin&replicaSet=finalproj';
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+const mongoDB = process.env.MONGODB_URI;
 
 main().catch(err => console.log(err));
 async function main() {
@@ -37,7 +38,7 @@ const athleteSchema = new mongoose.Schema({
   
   const athleteImage = mongoose.model('athleteImage', athleteSchema);
   
-  const folderPath = "C:/Users/rohanomalley/Desktop/CS_projects_work/ageGuess/ageGuess-master/wikipics/wikiphotos";
+  const folderPath = path.join(__dirname, 'wikiphotos');
   
   fs.readdir(folderPath, (err, files) => {
     if (err) throw err;

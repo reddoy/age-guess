@@ -1,7 +1,7 @@
 import os
 from PIL import Image
 
-path = "C:/Users/rohanomalley/Desktop/CS_projects_work/ageGuess/ageGuess-master/wikipics/wikiphotos"
+path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "wikiphotos")
 
 count = 0
 

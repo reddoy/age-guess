@@ -6,6 +6,8 @@ A web game where you guess how old celebrities, athletes, and community-submitte
 
 **Status:** Finished class project.
 
+**Demo video:** [youtu.be/myUy1EDBYhE](https://youtu.be/myUy1EDBYhE)
+
 ## Background
 
 I made this for one of my CS classes in college. Wikipedia usually notes the year a person's photo was taken, so I scraped the photos from Wikipedia and worked out how old each person was in their picture. That age is what you're trying to guess.
@@ -43,7 +45,7 @@ Use `npm start` to run it without auto-reload. Deployment steps for Render or Ra
 |---|---|
 | `server.js` | Express server and API routes |
 | `public-html/` | Frontend pages, scripts, styles, fonts, and images |
-| `ageGuess-master/wikipics/` | Scripts for scraping photos from Wikipedia and loading them into MongoDB |
+| `scripts/wikipics/` | Scripts for scraping photos from Wikipedia and loading them into MongoDB (uses `MONGODB_URI` from `.env`) |
 
 ## API
 

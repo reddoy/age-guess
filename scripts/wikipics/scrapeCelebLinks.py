@@ -1,3 +1,4 @@
+import os
 import requests
 import re
 from bs4 import BeautifulSoup
@@ -11,7 +12,7 @@ fn_elements = soup.find_all(class_='toccolours')
 link_checked = []
 
 
-with open('ageGuess-master\wikipics\wikiLinks.txt', 'w') as f:
+with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'wikiLinks.txt'), 'w') as f:
     for fn in fn_elements:
         a = fn.find_all('a')
         for a_elemen in a:
