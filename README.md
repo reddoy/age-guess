@@ -1,64 +1,74 @@
 # Age Guess
 
-A web game where you guess how old celebrities, athletes, and community-submitted people are. Make an account to save high scores and climb the leaderboards.
+A web game where you guess how old celebrities and athletes were when their photo was taken. Each game is five photos, and the closer your guess, the more points you score, up to 25,000.
 
-![Age Guess logo](public-html/images/logo.png)
+![Age Guess logo](site/images/logo.png)
 
-**Status:** Finished class project.
+**Play it:** [reddoy.github.io/age-guess](https://reddoy.github.io/age-guess/)
 
-**Demo video:** [youtu.be/myUy1EDBYhE](https://youtu.be/myUy1EDBYhE)
+**Status:** Finished class project, rebuilt in 2026 as a static site.
+
+**Original demo video:** [youtu.be/myUy1EDBYhE](https://youtu.be/myUy1EDBYhE)
 
 ## Background
 
-I made this for one of my CS classes in college. Wikipedia usually notes the year a person's photo was taken, so I scraped the photos from Wikipedia and worked out how old each person was in their picture. That age is what you're trying to guess.
+I made this for one of my CS classes in college. Wikipedia usually notes when a person's photo was taken, so I scraped the photos from Wikipedia and worked out how old each person was in their picture. That age is what you're trying to guess.
 
-## Features
+The original version ran on Node.js, Express and MongoDB, with accounts, leaderboards and community photo uploads. In 2026 I rebuilt it as a static site: the photos now come straight from Wikimedia Commons, ages are worked out to the exact day, and scoring is based on how close you get instead of exact-or-nothing. The original code is in the git history.
 
-- **Three game modes:** celebrities, athletes, and community photos uploaded by players
-- **Rounds of 25 guesses:** an exact guess scores a point and loads the next photo, a guess within 5 years lets you try again, and anything else costs a guess
-- **Accounts:** sign up to save high scores per mode, or play anonymously
-- **Leaderboards:** the top 10 players for each mode
+## How to play
+
+1. Pick **Celebrities** or **Athletes**.
+2. You see a photo, who it is and the year it was taken. Drag the slider (or use the arrow keys) to your guess and press **Guess** or Enter.
+3. An exact guess scores 5,000 points. You get about half that at 5 years off, and under 1,000 once you're 12 or more years off.
+4. After five photos you get your total and a recap. Your best score for each mode is saved in your browser.
 
 ## Tech stack
 
-- **Backend:** Node.js, Express, MongoDB with Mongoose, bcrypt for password hashing, and cookie-based sessions
-- **Frontend:** vanilla JavaScript, HTML, and CSS
-- **Data tooling:** Python scripts that scrape photos of celebrities and athletes from Wikipedia
+- **Frontend:** vanilla JavaScript (ES modules), HTML and CSS, with no build step
+- **Data:** a Python script that pulls photos and dates from Wikipedia, Wikidata and Wikimedia Commons
+- **Hosting:** GitHub Pages, deployed by a GitHub Actions workflow on every push to `main`
 
-## Getting started
+## Running it locally
 
-You need Node.js 18 or later and a MongoDB database (local or Atlas).
+The site is plain static files, so any local web server works:
 
 ```bash
 git clone https://github.com/reddoy/age-guess.git
 cd age-guess
-npm install
-cp .env.example .env   # set HOSTNAME, PORT, MONGODB_URI, SESSION_SECRET
-npm run dev            # http://localhost:3000
+python3 -m http.server 8000 --directory site   # http://localhost:8000
 ```
 
-Use `npm start` to run it without auto-reload. Deployment steps for Render or Railway are in [`DEPLOYMENT.md`](DEPLOYMENT.md).
+## Updating the photos
+
+The people in each mode are listed by Wikipedia page title in `scripts/people/celebrities.txt` and `scripts/people/athletes.txt`. To rebuild the game data after editing those lists:
+
+```bash
+pip install requests
+python3 scripts/build_photos.py               # or --mode athletes, --limit 50 to test
+```
+
+For each page, the script:
+
+1. Finds the page's main photo, keeping only freely licensed ones.
+2. Gets the person's birth date from Wikidata and checks the year against the page's "births" category, since Wikidata is sometimes vandalized.
+3. Keeps the photo only if Wikimedia Commons records the exact day it was taken, then works out the person's age on that day.
+
+It writes the results, including photo credits, to `site/data/<mode>.json`.
 
 ## Project structure
 
 | Path | What's in it |
 |---|---|
-| `server.js` | Express server and API routes |
-| `public-html/` | Frontend pages, scripts, styles, fonts, and images |
-| `scripts/wikipics/` | Scripts for scraping photos from Wikipedia and loading them into MongoDB (uses `MONGODB_URI` from `.env`) |
+| `site/` | The game: `index.html` (mode picker), `play.html` and `game.js` (the game), `style.css`, the font and logo |
+| `site/data/` | Generated photo data for each mode |
+| `scripts/build_photos.py` | Builds the photo data from Wikipedia, Wikidata and Wikimedia Commons |
+| `scripts/people/` | Wikipedia pages to pull people from |
+| `.github/workflows/pages.yml` | Deploys `site/` to GitHub Pages |
 
-## API
+## Credits
 
-| Method | Route | Purpose |
-|---|---|---|
-| `POST` | `/account/create` | Create an account |
-| `POST` | `/account/login/` | Log in |
-| `GET` | `/get/account` | Current user's info and high scores |
-| `GET` | `/get/image/:mode` | Random photo for a mode (`celeb`, `athlete`, or `comm`) |
-| `POST` | `/check/guess/:mode` | Check a guess |
-| `POST` | `/save/score/:mode` | Save a score |
-| `POST` | `/upload/image` | Upload a community photo |
-| `GET` | `/get/leaderboard/:mode` | Top 10 scores for a mode |
+Photos are from [Wikimedia Commons](https://commons.wikimedia.org) and are credited to their photographers in the game. Birth dates are from [Wikidata](https://www.wikidata.org).
 
 ## Authors
 

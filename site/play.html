@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ageGuess</title>
+  <link rel="icon" href="images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="game.js"></script>
+</head>
+<body>
+  <nav class="nav">
+    <a href="./" class="brand">ageGuess 🤔</a>
+    <div class="hud">
+      <span id="round-label">Photo 1 / 5</span>
+      <span id="total-label">0 pts</span>
+    </div>
+  </nav>
+
+  <main class="game" id="game">
+    <section class="panel photo-panel">
+      <p class="tag" id="mode-label"></p>
+      <div class="photo-frame" id="photo-frame">
+        <img id="photo" alt="">
+        <div class="age-badge" id="age-badge" hidden></div>
+      </div>
+      <h2 class="person" id="person"></h2>
+      <p class="taken" id="taken"></p>
+      <p class="credit"><a id="credit" target="_blank" rel="noopener"></a></p>
+    </section>
+
+    <section class="panel guess-panel">
+      <div id="guess-controls">
+        <p class="guess-value"><span id="guess-number">40</span><span class="unit">years old</span></p>
+        <input type="range" id="slider" min="1" max="100" value="40" aria-label="Your age guess">
+        <div class="scale"><span>1</span><span>50</span><span>100</span></div>
+        <button class="button" id="submit">Guess</button>
+        <p class="hint">Drag the slider or use the arrow keys, then press Enter.</p>
+      </div>
+
+      <div id="result" hidden>
+        <p class="verdict" id="verdict"></p>
+        <div class="track" id="track">
+          <div class="track-gap" id="track-gap"></div>
+          <div class="marker marker-guess" id="marker-guess"><span></span></div>
+          <div class="marker marker-actual" id="marker-actual"><span></span></div>
+        </div>
+        <p class="result-line" id="result-line"></p>
+        <div class="points-bar"><div class="points-fill" id="points-fill"></div></div>
+        <p class="points" id="points"></p>
+        <button class="button" id="next">Next photo</button>
+      </div>
+    </section>
+  </main>
+
+  <main class="summary" id="summary" hidden>
+    <section class="panel summary-panel">
+      <p class="tag" id="summary-mode"></p>
+      <h1 class="summary-total" id="summary-total"></h1>
+      <p class="summary-out-of">out of 25,000</p>
+      <p class="new-best" id="new-best" hidden>New personal best!</p>
+      <ol class="recap" id="recap"></ol>
+      <div class="summary-actions">
+        <button class="button" id="again">Play again</button>
+        <a class="button button-ghost" href="./">Change mode</a>
+      </div>
+    </section>
+  </main>
+
+  <p class="load-error" id="load-error" hidden>Couldn't load the photos. Refresh to try again.</p>
+</body>
+</html>
